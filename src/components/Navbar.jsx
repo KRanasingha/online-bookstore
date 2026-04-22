@@ -9,8 +9,12 @@ export default function Navbar() {
       }}>
         <span>Black Friday Sale For All Books And Free Express Delivery – OFF 50%!</span>
         <a href="/shop" style={{ color: "#fff", fontWeight: "700", textDecoration: "underline" }}>ShopNow</a>
-        <button style={{ marginLeft: "auto",position: "absolute", right: "24px", display: "flex", alignItems: "center", gap: "4px", cursor: "pointer", background: "none", border: "none", color: "#fff", fontSize: "13px" }}>
-         English ▾
+        <button style={{ 
+            position: "absolute", right: "24px", display: "flex", 
+            alignItems: "center", gap: "4px", cursor: "pointer", 
+            background: "none", border: "none", color: "#fff", fontSize: "13px" 
+        }}>
+          English ▾
         </button>
       </div>
 
@@ -21,27 +25,71 @@ export default function Navbar() {
         borderBottom: "1px solid #eee", gap: "16px",
         position: "sticky", top: 0, zIndex: 1000,
       }}>
-        <a href="/" style={{ fontSize: "20px", fontWeight: "700", color: "#111", textDecoration: "none" }}>
+        {/* Logo */}
+        <a href="/" style={{ fontSize: "24px", fontWeight: "800", color: "#111", textDecoration: "none" }}>
           Books.com
         </a>
 
-        <ul style={{ display: "flex", listStyle: "none", margin: 0, padding: 0, gap: "28px", alignItems: "center" }}>
-          <li><a href="/" style={{ textDecoration: "none", color: "#111", fontSize: "14px" }}>Home</a></li>
-          <li><a href="/contact" style={{ textDecoration: "none", color: "#111", fontSize: "14px" }}>Contact</a></li>
-          <li><a href="/about" style={{ textDecoration: "none", color: "#111", fontSize: "14px" }}>About</a></li>
-          <li><a href="/signup" style={{ textDecoration: "underline", color: "#111", fontSize: "14px", fontWeight: "500" }}>Sign Up</a></li>
+        {/* Nav Links */}
+        <ul style={{ 
+            display: "flex", listStyle: "none", margin: 0, padding: 0, 
+            gap: "28px", alignItems: "center", fontWeight: "500" 
+        }}>
+          <li><a href="/" style={{ textDecoration: "none", color: "#111", fontSize: "15px" }}>Home</a></li>
+          <li><a href="/contact" style={{ textDecoration: "none", color: "#111", fontSize: "15px" }}>Contact</a></li>
+          <li><a href="/about" style={{ textDecoration: "none", color: "#111", fontSize: "15px" }}>About</a></li>
+          <li><a href="/signup" style={{ textDecoration: "none", color: "#111", fontSize: "15px" }}>Sign Up</a></li>
         </ul>
 
-        <div style={{
-          display: "flex", alignItems: "center", background: "#f5f5f5",
-          border: "1px solid #ddd", borderRadius: "4px", overflow: "hidden",
-        }}>
-          <input
-            type="text"
-            placeholder="What are you looking for?"
-            style={{ border: "none", outline: "none", background: "transparent", padding: "8px 12px", fontSize: "13px", width: "200px" }}
-          />
-          <button style={{ background: "none", border: "none", padding: "8px 10px", cursor: "pointer", fontSize: "15px" }}>⌕</button>
+        {/* Search and Icons */}
+        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+          
+          {/* Search Bar */}
+          <div style={{
+            display: "flex", alignItems: "center", background: "#f5f5f5",
+            borderRadius: "4px", overflow: "hidden", paddingRight: "8px"
+          }}>
+            <input
+              type="text"
+              placeholder="What are you looking for?"
+              style={{ 
+                  border: "none", outline: "none", background: "transparent", 
+                  padding: "8px 12px", fontSize: "13px", width: "180px" 
+              }}
+            />
+            <span style={{ cursor: "pointer", fontSize: "18px" }}>⌕</span>
+          </div>
+
+          {/* Action Icons */}
+          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+            
+            {/* Wishlist Link */}
+            <a href="/wishlist" style={{ position: "relative", cursor: "pointer", display: "flex", alignItems: "center" }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+              <span style={{ position: "absolute", top: "-5px", right: "-5px", backgroundColor: "#DB4444", color: "white", borderRadius: "50%", padding: "2px 5px", fontSize: "10px" }}>4</span>
+            </a>
+
+            {/* Cart Link */}
+            <a href="/cart" style={{ position: "relative", cursor: "pointer", display: "flex", alignItems: "center" }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <span style={{ position: "absolute", top: "-5px", right: "-5px", backgroundColor: "#DB4444", color: "white", borderRadius: "50%", padding: "2px 5px", fontSize: "10px" }}>2</span>
+            </a>
+
+            {/* Profile Link */}
+            <a href="/profile" style={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </a>
+
+          </div>
         </div>
       </nav>
     </>
