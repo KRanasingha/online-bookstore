@@ -39,7 +39,7 @@ export default function Navbar() {
             gap: "28px", alignItems: "center", fontWeight: "500" 
         }}>
           <li><Link to="/" style={{ textDecoration: "none", color: "#111", fontSize: "15px" }}>Home</Link></li>
-          <li><Link to="/contact" style={{ textDecoration: "none", color: "#111", fontSize: "15px" }}>Contact</Link></li>
+          <li><Link to="/Contact" style={{ textDecoration: "none", color: "#111", fontSize: "15px" }}>Contact</Link></li>
           <li><Link to="/about" style={{ textDecoration: "none", color: "#111", fontSize: "15px" }}>About</Link></li>
           <li><Link to="/signup" style={{ textDecoration: "none", color: "#111", fontSize: "15px" }}>Sign Up</Link></li>
         </ul>

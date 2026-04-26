@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Wishlist from './pages/Wishlist';
 import Profile from './pages/Profile';
+import Contact from './pages/Contact';
 
 function App() {
 
@@ -22,9 +23,10 @@ function App() {
         <Route path="/books/:id" element={<BookDetails />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/Register" element={<Register />} />
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/Profile" element={<Profile />} />
+        <Route path="/Contact" element={<Contact />} />
       </Routes>
 
       <Footer />
