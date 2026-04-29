@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import styles from './Cart.module.css';
 
 const CartPage = () => {
-  // Store cart items in a State array
   const [cartItems, setCartItems] = useState([
     {
       id: 1,
@@ -19,124 +19,102 @@ const CartPage = () => {
     }
   ]);
 
-  // Function to handle quantity updates
   const handleQuantityChange = (id, newQuantity) => {
-    // Prevent quantity from being less than 1
-    if (newQuantity < 1) return; 
-    
+    if (newQuantity < 1) return;
+
     const updatedCart = cartItems.map(item =>
       item.id === id ? { ...item, quantity: parseInt(newQuantity) } : item
     );
     setCartItems(updatedCart);
   };
 
-  // Function to remove an item from the cart
   const handleRemoveItem = (id) => {
-    const filteredCart = cartItems.filter(item => item.id !== id);
-    setCartItems(filteredCart);
+    setCartItems(cartItems.filter(item => item.id !== id));
   };
 
-  // Calculate the total price of all items
   const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', padding: '40px 5%', color: '#111' }}>
-      
-      {/* Breadcrumb Navigation */}
-      <nav style={{ fontSize: '14px', color: '#888', marginBottom: '40px' }}>
-        Home / <span style={{ color: '#111' }}>Cart</span>
+    <div className={styles.container}>
+
+      <nav className={styles.breadcrumb}>
+        Home / <span>Cart</span>
       </nav>
 
-      {/* Cart Table Header */}
-      <div style={{ 
-        display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', 
-        padding: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)', 
-        borderRadius: '4px', fontWeight: '500', marginBottom: '25px' 
-      }}>
+      <div className={styles.headerRow}>
         <div>Product</div>
         <div>Price</div>
         <div>Quantity</div>
-        <div style={{ textAlign: 'right' }}>Subtotal</div>
+        <div className={styles.rightText}>Subtotal</div>
       </div>
 
-      {/* List of Cart Items */}
-      {cartItems.map((item) => (
-        <div key={item.id} style={{ 
-          display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', 
-          padding: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)', 
-          borderRadius: '4px', alignItems: 'center', marginBottom: '20px' 
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-            <div style={{ position: 'relative' }}>
-               {/* Delete/Remove Button */}
-               <span 
+      {cartItems.map(item => (
+        <div key={item.id} className={styles.cartRow}>
+          
+          <div className={styles.product}>
+            <div className={styles.imgWrapper}>
+              <span 
                 onClick={() => handleRemoveItem(item.id)}
-                style={{ 
-                  position: 'absolute', top: '-10px', left: '-5px', backgroundColor: '#DB4444', 
-                  color: 'white', borderRadius: '50%', width: '20px', height: '20px', 
-                  display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer', fontSize: '12px', zIndex: 2
-                }}>×</span>
-               <img src={item.img} alt="Book" />
+                className={styles.removeBtn}
+              >×</span>
+              <img src={item.img} alt="Book" />
             </div>
             <span>{item.name}</span>
           </div>
+
           <div>Rs. {item.price.toLocaleString()}</div>
+
           <div>
-            <input 
-              type="number" 
-              value={item.quantity} 
+            <input
+              type="number"
+              value={item.quantity}
               onChange={(e) => handleQuantityChange(item.id, e.target.value)}
-              style={{ width: '60px', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }} 
+              className={styles.qtyInput}
             />
           </div>
-          <div style={{ textAlign: 'right', fontWeight: '500' }}>
+
+          <div className={styles.rightText}>
             Rs. {(item.price * item.quantity).toLocaleString()}
           </div>
+
         </div>
       ))}
 
-      {/* Empty Cart Message */}
       {cartItems.length === 0 && (
-        <p style={{ textAlign: 'center', padding: '40px', color: '#888' }}>
-          Your cart is currently empty.
-        </p>
+        <p className={styles.empty}>Your cart is currently empty.</p>
       )}
 
-      {/* Navigation Buttons */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '60px' }}>
-        <button style={{ padding: '12px 30px', background: 'none', border: '1px solid #111', borderRadius: '4px', fontWeight: '500', cursor: 'pointer' }}>Return To Shop</button>
-        <button style={{ padding: '12px 30px', background: 'none', border: '1px solid #111', borderRadius: '4px', fontWeight: '500', cursor: 'pointer' }}>Update Cart</button>
+      <div className={styles.actions}>
+        <button className={styles.btn}>Return To Shop</button>
+        <button className={styles.btn}>Update Cart</button>
       </div>
 
-      {/* Summary Section: Coupon & Total Calculation */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '40px', alignItems: 'flex-start' }}>
+      <div className={styles.summarySection}>
         
-        {/* Coupon Input Area */}
-        <div style={{ display: 'flex', gap: '15px' }}>
-          <input 
-            type="text" 
-            placeholder="Coupon Code" 
-            style={{ padding: '12px 20px', border: '1px solid #111', borderRadius: '4px', width: '250px' }} 
-          />
-          <button style={{ padding: '12px 35px', backgroundColor: '#DB4444', color: 'white', border: 'none', borderRadius: '4px', fontWeight: '500', cursor: 'pointer' }}>Apply Coupon</button>
+        <div className={styles.coupon}>
+          <input type="text" placeholder="Coupon Code" className={styles.input} />
+          <button className={styles.primaryBtn}>Apply Coupon</button>
         </div>
 
-        {/* Final Calculation Box */}
-        <div style={{ border: '1.5px solid #111', borderRadius: '4px', padding: '30px', width: '400px' }}>
-          <h3 style={{ marginTop: 0, marginBottom: '25px' }}>Cart Total</h3>
-          <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #ccc', paddingBottom: '15px', marginBottom: '15px' }}>
+        <div className={styles.summaryBox}>
+          <h3>Cart Total</h3>
+
+          <div className={styles.summaryRow}>
             <span>Subtotal:</span>
             <span>Rs. {subtotal.toLocaleString()}</span>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #ccc', paddingBottom: '15px', marginBottom: '15px' }}>
+
+          <div className={styles.summaryRow}>
             <span>Shipping:</span>
             <span>Free</span>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '30px' }}>
+
+          <div className={styles.totalRow}>
             <span>Total:</span>
-            <span style={{ fontWeight: 'bold' }}>Rs. {subtotal.toLocaleString()}</span>
+            <span><b>Rs. {subtotal.toLocaleString()}</b></span>
           </div>
-          <button style={{ width: '100%', padding: '15px', backgroundColor: '#DB4444', color: 'white', border: 'none', borderRadius: '4px', fontWeight: '500', cursor: 'pointer' }}>
+
+          <button className={styles.checkoutBtn}>
             Process to checkout
           </button>
         </div>
