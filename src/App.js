@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import Books from './pages/Books';
-import BookDetails from './pages/BookDetails';
-import Cart from './pages/Cart';
-import SignUp from './pages/signup';
-import Register from './pages/Register';
-import Wishlist from './pages/Wishlist';
-import Profile from './pages/Profile';
-import Contact from './pages/Contact';
+import Home from './Customer/Home';
+import Books from './Customer/Books';
+import BookDetails from './Customer/BookDetails';
+import Cart from './Customer/Cart';
+import SignUp from './Customer/signup';
+import Register from './Customer/Register';
+import Wishlist from './Customer/Wishlist';
+import Profile from './Customer/Profile';
+import Contact from './Customer/Contact';
 
 
 function App() {
