@@ -1,3 +1,5 @@
+import styles from "./Footer.module.css";
+
 export default function Footer() {
   const accountLinks = [
     { label: "My Account", href: "/account" },
@@ -22,53 +24,63 @@ export default function Footer() {
   ];
 
   return (
-    <footer style={{ background: "#111", color: "#fff", padding: "40px 32px 20px" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "32px", marginBottom: "32px" }}>
+    <footer className={styles.footer}>
+      
+      <div className={styles.grid}>
 
-        {/* Brand + Subscribe */}
+        {/* Brand */}
         <div>
-          <a href="/" style={{ fontSize: "18px", fontWeight: "700", color: "#fff", textDecoration: "none", display: "block", marginBottom: "10px" }}>
-            Books.com
-          </a>
-          <p style={{ fontSize: "13px", fontWeight: "600", margin: "0 0 6px" }}>Subscribe</p>
-          <p style={{ fontSize: "12px", color: "#aaa", margin: "0 0 12px" }}>Get 10% off your first order</p>
-          <div style={{ display: "flex", border: "1px solid #555", borderRadius: "4px", overflow: "hidden" }}>
+          <a href="/" className={styles.brand}>Books.com</a>
+
+          <p className={styles.subscribeText}>Subscribe</p>
+          <p className={styles.subNote}>Get 10% off your first order</p>
+
+          <div className={styles.subscribeBox}>
             <input
               type="email"
               placeholder="Enter your email"
-              style={{ background: "transparent", border: "none", outline: "none", padding: "8px 10px", color: "#fff", fontSize: "12px", flex: 1 }}
+              className={styles.input}
             />
-            <button style={{ background: "none", border: "none", color: "#fff", padding: "8px 10px", cursor: "pointer" }}>→</button>
+            <button className={styles.sendBtn}>→</button>
           </div>
         </div>
 
         {/* Support */}
         <div>
-          <p style={{ fontSize: "14px", fontWeight: "600", margin: "0 0 14px" }}>Support</p>
-          <p style={{ fontSize: "12px", color: "#aaa", margin: "0 0 8px", lineHeight: "1.6" }}>26/2A, Nugegoda,<br />Sri Lanka</p>
-          <a href="mailto:books@gmail.com" style={{ display: "block", fontSize: "12px", color: "#aaa", marginBottom: "6px", textDecoration: "none" }}>books@gmail.com</a>
-          <a href="tel:+94711234567" style={{ fontSize: "12px", color: "#aaa", textDecoration: "none" }}>+94 711234567</a>
+          <p className={styles.sectionTitle}>Support</p>
+
+          <p className={styles.text}>
+            26/2A, Nugegoda,<br />Sri Lanka
+          </p>
+
+          <a href="mailto:books@gmail.com" className={styles.link}>
+            books@gmail.com
+          </a><br/>
+
+          <a href="tel:+94711234567" className={styles.link}>
+            +94 711234567
+          </a>
         </div>
 
         {/* Account */}
         <div>
-          <p style={{ fontSize: "14px", fontWeight: "600", margin: "0 0 14px" }}>Account</p>
-          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+          <p className={styles.sectionTitle}>Account</p>
+          <ul className={styles.list}>
             {accountLinks.map(({ label, href }) => (
               <li key={label}>
-                <a href={href} style={{ color: "#aaa", textDecoration: "none", fontSize: "12px" }}>{label}</a>
+                <a href={href} className={styles.link}>{label}</a>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Quick Link */}
+        {/* Quick Links */}
         <div>
-          <p style={{ fontSize: "14px", fontWeight: "600", margin: "0 0 14px" }}>Quick Link</p>
-          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+          <p className={styles.sectionTitle}>Quick Link</p>
+          <ul className={styles.list}>
             {quickLinks.map(({ label, href }) => (
               <li key={label}>
-                <a href={href} style={{ color: "#aaa", textDecoration: "none", fontSize: "12px" }}>{label}</a>
+                <a href={href} className={styles.link}>{label}</a>
               </li>
             ))}
           </ul>
@@ -76,11 +88,10 @@ export default function Footer() {
 
         {/* Social */}
         <div>
-          <p style={{ fontSize: "14px", fontWeight: "600", margin: "0 0 14px" }}>Download App</p>
-          <div style={{ display: "flex", gap: "16px" }}>
+          <p className={styles.sectionTitle}>Download App</p>
+          <div className={styles.social}>
             {socialLinks.map(({ label, href, icon }) => (
-              <a key={label} href={href} aria-label={label} target="_blank" rel="noreferrer"
-                style={{ color: "#aaa", textDecoration: "none", fontSize: "13px" }}>
+              <a key={label} href={href} target="_blank" rel="noreferrer">
                 {icon}
               </a>
             ))}
@@ -89,9 +100,10 @@ export default function Footer() {
 
       </div>
 
-      <div style={{ borderTop: "1px solid #333", paddingTop: "16px", textAlign: "center", fontSize: "12px", color: "#666" }}>
+      <div className={styles.bottom}>
         © Copyright 2026. All right reserved
       </div>
+
     </footer>
   );
 }
