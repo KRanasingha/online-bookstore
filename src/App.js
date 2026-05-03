@@ -10,6 +10,10 @@ import Register from './Customer/Register';
 import Wishlist from './Customer/Wishlist';
 import Profile from './Customer/Profile';
 import Contact from './Customer/Contact';
+import Cashier from './Admin/Cashier';
+import Lendings from './Admin/Lendings';
+import Promotions from './Admin/Promotions';
+import Setting from './Admin/Setting';
 
 
 function App() {
@@ -28,6 +32,10 @@ function App() {
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/Cashier" element={<Cashier />} />
+        <Route path="/Lendings" element={<Lendings />} />
+        <Route path="/Promotions" element={<Promotions />} />
+        <Route path="/Setting" element={<Setting />} />
       </Routes>
 
       <Footer />
